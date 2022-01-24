@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 // Components
 import Layout from "../components/Layout";
 
@@ -9,7 +7,7 @@ const Nosotros = () => {
             <Layout
                 pagina="Nosotros"
             >       
-                <h1>Desde Nosotros</h1>
+                <h1  className='heading'>Desde Nosotros</h1>
             </Layout> 
         </div>
     );
