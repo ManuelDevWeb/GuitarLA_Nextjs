@@ -26,7 +26,7 @@ const Blog = ({ entradas }) => {
   );
 };
 
-// Función para obtener los datos se obtienen en cada request
+// Función para obtener los datos que se obtienen en cada request
 export async function getServerSideProps() {
   const url = "http://localhost:1337/blogs";
   const respuesta = await fetch(url);
