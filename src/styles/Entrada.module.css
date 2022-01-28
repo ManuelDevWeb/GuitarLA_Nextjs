@@ -20,6 +20,7 @@
 }
 
 .resumen {
+    /* Si hay mas de 4 lineas de texto las oculta con css */
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 // Helpers
-import {formatearFecha} from '../../helpers/';
+import {formatearFecha} from '../../helpers';
 
 // Components
 import Layout from "../../components/layout";
@@ -17,7 +17,9 @@ const EntradaBlog = ({ entrada }) => {
   const router = useRouter();
 
   return (
-    <Layout>
+    <Layout
+      pagina={titulo}
+    >
       <main className="contenedor">
         <h1 className="heading">{titulo}</h1>
         <article className={styles.entrada}>
@@ -46,7 +48,7 @@ export async function getStaticPaths() {
 
   const paths = entradas.map((entrada) => ({
     params: {
-      id: entrada.id.toString(),
+      url: entrada.url,
     },
   }));
 
@@ -57,16 +59,16 @@ export async function getStaticPaths() {
 }
 
 // Función para obtener los datos cuando se crea el build
-export async function getStaticProps({ params: { id } }) {
-  const url = `${process.env.API_URL}/blogs/${id}`;
+export async function getStaticProps({ params: { url } }) {
+  const urlBlog = `${process.env.API_URL}/blogs?url=${url}`;
   // console.log(url);
-  const respuesta = await fetch(url);
+  const respuesta = await fetch(urlBlog);
   const entrada = await respuesta.json();
   // console.log(entrada);
 
   return {
     props: {
-      entrada,
+      entrada: entrada[0]
     },
   };
 }
