@@ -11,7 +11,7 @@ import Layout from "../../components/layout";
 import styles from "../../styles/Entrada.module.css";
 
 const EntradaBlog = ({ entrada }) => {
-  const { contenido, imagen, published_at, titulo } = entrada;
+  const { contenido, imagen, published_at, titulo } = entrada[0];
 
   // Accedemos a la información que hay en la url
   const router = useRouter();
@@ -68,7 +68,7 @@ export async function getStaticProps({ params: { url } }) {
 
   return {
     props: {
-      entrada: entrada[0]
+      entrada
     },
   };
 }

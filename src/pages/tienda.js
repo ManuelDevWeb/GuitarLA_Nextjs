@@ -31,8 +31,7 @@ export async function getServerSideProps() {
         props:{
             guitarras
         }
-    }
-    
-  }
+    }    
+}
  
 export default Tienda;

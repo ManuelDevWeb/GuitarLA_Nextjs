@@ -1,6 +1,6 @@
 // Components
 import Layout from "../components/Layout";
-import Entrada from "../components/Entrada";
+import ListadoBlog from "../components/ListadoBlog";
 
 // Styles
 import styles from "../styles/Blog.module.css";
@@ -8,19 +8,8 @@ import styles from "../styles/Blog.module.css";
 const Blog = ({ entradas }) => {
   return (
     <Layout title="Blog">
-      <main className="contenedor">
-        <h2 className="heading">Blog</h2>
-
-        <div className={styles.blog}>
-            {
-                entradas.map(entrada=>(
-                    <Entrada
-                        key={entrada.id}
-                        entrada={entrada}
-                    />
-                ))
-            }
-        </div>
+      <main className="contenedor">  
+        <ListadoBlog entradas={entradas} />
       </main>
     </Layout>
   );
@@ -28,7 +17,8 @@ const Blog = ({ entradas }) => {
 
 // Función para obtener los datos que se obtienen en cada request
 export async function getServerSideProps() {
-  const url = `${process.env.API_URL}/blogs`;
+  // Strapi permite ordenar los elementos por parámetro que indiquemos y en el orden que queramos
+  const url = `${process.env.API_URL}/blogs?_sort=created_at:desc`;
   const respuesta = await fetch(url);
   const entradas = await respuesta.json();
   // console.log(entradas);

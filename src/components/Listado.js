@@ -1,9 +1,12 @@
 // Components
 import Guitarra from './Guitarra';
 
+// Styles
+import styles from '../styles/Listado.module.css';
+
 const Listado = ({guitarras}) => {
     return (
-        <div>
+        <div className={styles.listado}>
             {
                 guitarras.map(guitarra=>(
                     <Guitarra 
