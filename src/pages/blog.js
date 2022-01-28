@@ -31,7 +31,7 @@ export async function getServerSideProps() {
   const url = `${process.env.API_URL}/blogs`;
   const respuesta = await fetch(url);
   const entradas = await respuesta.json();
-  //console.log(entradas);
+  // console.log(entradas);
 
   // Automaticamente tenemos acceso a los pros en esta página
   return {
